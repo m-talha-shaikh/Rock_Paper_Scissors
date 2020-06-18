@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+</head>
+<body>
+	<script>
+
+		function playRound(playerSelection , computerSelection) {
+			playerSelection.toLowerCase();
+			computerSelection.toLowerCase();
+
+			if(playerSelection === computerSelection) {
+				return `Game Draw! You both selected ${playerSelection}.`
+			} else if (playerSelection === "rock") {
+				if (computerSelection === "scissors") {
+					playerScore++;
+					return `You win! ${playerSelection} beats ${computerSelection}.`
+				} else {
+					computerScore++;
+					return `You Loose! ${computerSelection} beats ${playerSelection}.`
+				}
+			} else if (playerSelection === "paper") {
+				if(computerSelection === "rock") {
+					playerScore++
+					return `You win! ${playerSelection} beats ${computerSelection}.`
+				} else {
+					computerScore++
+					return `You Loose! ${computerSelection} beats ${playerSelection}.`
+				}
+			} else if (playerSelection === "scissors") {
+				if (computerSelection === "paper") {
+					playerScore++
+					return `You win! ${playerSelection} beats ${computerSelection}.`
+				} else {
+					computerScore++
+					return `You Loose! ${computerSelection} beats ${playerSelection}.`
+				}
+			} else {
+				return `There is an error`;
+			}
+		}
+
+		function computerPlay() {
+            const number = (Math.random() * 3);
+            if (number <= 1) {
+                return 'rock';
+            } else if (number >= 2) {
+                return 'scissors';
+            }
+            else return 'paper';
+        }
+
+        function game() {
+        	for (let i = 0; i < 5; i++) {
+                let playerSelection = prompt('Type: Rock, Paper, or Scissors')
+                playerSelection = playerSelection.toLowerCase();
+                const computerSelection = computerPlay()
+                console.log(playRound(playerSelection, computerSelection))
+            }
+
+             if (playerScore > computerScore) {
+                console.log(`You're the winner! Final Score: ${playerScore} to ${computerScore}`);
+            } else if (computerScore > playerScore) {
+                console.log(`You're the loser. Final Score: ${playerScore} to ${computerScore}`);
+            } else
+                console.log(`You tied. Final Score: ${playerScore} to ${computerScore}`);
+        }
+
+        let computerScore = 0 ;
+        let playerScore = 0 ;
+
+
+	</script>
+</body>
+</html>
